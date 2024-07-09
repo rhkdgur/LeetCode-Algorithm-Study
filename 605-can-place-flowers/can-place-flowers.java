@@ -21,10 +21,6 @@ class Solution {
                 }
             }
         }
-        
-        System.out.println(cnt);
-        System.out.println(cnt2);
-        System.out.println(Arrays.toString(flowerbed));
 
         if((cnt - cnt2) >= n) {
             return true;
