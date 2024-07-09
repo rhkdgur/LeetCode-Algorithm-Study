@@ -1,8 +1,7 @@
 class Solution {
     public String reverseVowels(String s) {
-        String[] vowels = {"a","e","i","o","u"};
+        String[] vowels = {"a","e","i","o","u","A","E","I","O","U"};
         String[] values = s.split("");
-        String[] temps = s.toLowerCase().split("");
         StringBuffer str = new StringBuffer();
 
         int len = values.length;
@@ -12,7 +11,7 @@ class Solution {
 
         for(int i = 0; i<len; i++) {
             for(int j = 0; j<len2; j++){
-                if(temps[i].equals(vowels[j])){
+                if(values[i].equals(vowels[j])){
                     stacks.push(values[i]);
                     values[i] = "";
                     break;
