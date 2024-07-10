@@ -34,13 +34,15 @@ class Solution {
 					}
 					cnt = 0;
 				}
-			}
+			}else {
+                str.append(chars[i]);
+                if(cnt > 0){
+                    str.append(cnt+1);
+                }
+            }
 		}
 
-        str.append(chars[len-1]);
-        if(cnt > 0){
-            str.append(cnt+1);
-        }
+        
 		
         for(int i = 0; i<str.toString().length(); i++) {
             chars[i] = str.toString().charAt(i);
