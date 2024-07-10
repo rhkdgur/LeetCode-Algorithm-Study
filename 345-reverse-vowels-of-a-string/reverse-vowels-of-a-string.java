@@ -1,34 +1,29 @@
 class Solution {
     public String reverseVowels(String s) {
-        String[] vowels = {"a","e","i","o","u","A","E","I","O","U"};
-        String[] values = s.split("");
-        StringBuffer str = new StringBuffer();
+        String vowels = "aeiouAEIOU";
+        int len = vowels.length();
+        StringBuffer reserve = new StringBuffer();
+        StringBuffer result = new StringBuffer();
 
-        int len = values.length;
-        int len2 = vowels.length;
-
-        Stack<String> stacks = new Stack();
-
-        for(int i = 0; i<len; i++) {
-            for(int j = 0; j<len2; j++){
-                if(values[i].equals(vowels[j])){
-                    stacks.push(values[i]);
-                    values[i] = "";
+        for(int i = 0; i<s.length(); i++) {
+            for(int j=0; j<len; j++) {
+                if(vowels.indexOf(s.charAt(i)) > -1) {
+                    reserve.append(s.charAt(i));
                     break;
                 }
             }
         }
 
-        int index = 0;
-        for(int i = 0; i<len; i++){
-            if("".equals(values[i])){
-                str.append(stacks.pop());
-                index++;
+        int j = reserve.length() - 1;
+        for(int i = 0; i<s.length(); i++) {
+            if(vowels.indexOf(s.charAt(i)) > -1){
+                result.append(reserve.charAt(j));
+                j--;
             }else {
-                str.append(values[i]);
+                result.append(s.charAt(i));
             }
         }
 
-        return str.toString();
+        return result.toString();
     }
 }
