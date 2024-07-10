@@ -21,6 +21,8 @@ class Solution {
         //     }
         // }
 
+        //Runtime 1ms Beats 86.41%
+        //Memory 41.60 MB Beats 64.35%
         int index = 0;
         while(index < len1 || index < len2) {
 
