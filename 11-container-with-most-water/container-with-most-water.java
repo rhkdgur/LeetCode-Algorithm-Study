@@ -5,6 +5,8 @@ class Solution {
 		int left = 0;
 		int right = len - 1;
 		int max = 0;
+
+        // 양쪽 point로부터 서로 가까워 지는 것이기에 교차되는 순간 while 문 탈출
         while(left < right) {
         	
             // x 좌표 양 측 point 길이
