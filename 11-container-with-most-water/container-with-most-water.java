@@ -28,6 +28,7 @@ class Solution {
                 right--;
             }
 
+            // 밑에 방법도 동일한 결과이지만 속도면에서 윗 while 코드가 더 빠름..
             // if(height[left] <= hmin) {
         	// 	left++;
         	// }
