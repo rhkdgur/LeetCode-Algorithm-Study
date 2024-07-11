@@ -1,10 +1,11 @@
 class Solution {
     public int maxOperations(int[] nums, int k) {
         
+        Arrays.sort(nums);
+
         int left = 0;
         int right = nums.length-1; 
         int cnt = 0;
-        Arrays.sort(nums);
 
         while(left < right) {
             int s = nums[left] + nums[right];
