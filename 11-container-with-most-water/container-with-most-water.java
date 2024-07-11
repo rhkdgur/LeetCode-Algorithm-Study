@@ -19,12 +19,21 @@ class Solution {
             // 직사각형 들의 최대값이 뭔지 체크
         	max = max < b ? b : max;
         	
+            //높이 최소값이 left 쪽이 낮거나 같으면 left ++;
             while(left < right && height[left] <= h) {
                 left++;
             }
+            //높이 최소값이 right 쪽이 낮거나 같으면 right --;
             while(left < right && height[right] <= h){
                 right--;
             }
+
+            // if(height[left] <= hmin) {
+        	// 	left++;
+        	// }
+        	// if(height[right] <= hmin) {
+        	// 	right--;
+        	// }
         }
         
         return max;
