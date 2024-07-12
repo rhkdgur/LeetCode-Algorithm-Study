@@ -5,6 +5,8 @@ class Solution {
 
         Map<String,Integer> map = new HashMap<>();
 
+        // stringBuilder 를 이용하여 가로 값과 세로값을 비교하여 Map에 들어있는 값과 같을 경우
+        // cnt를 더하여 처리하는 방법
         for(int i = 0; i<grid.length; i++) {
             StringBuilder arr = new StringBuilder();
             for(int j = 0; j<grid[i].length; j++){
