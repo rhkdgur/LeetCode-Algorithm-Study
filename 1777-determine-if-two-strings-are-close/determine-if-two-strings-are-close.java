@@ -31,6 +31,7 @@ class Solution {
         int[] l2 = new int[s2.size()];
 
         // 맵을 쓰면 빠르다고 하지만,... 역시 느리긴함..
+        // Map은 hashcode를 이용해서 찾기 때문에 이런 알고리즘에서 속도가 조금 느리네유...
         int i = 0;
         for(String s : s1) {
             if(m2.get(s) == null ) {
