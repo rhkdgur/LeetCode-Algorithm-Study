@@ -3,6 +3,7 @@ class Solution {
         
         // 알파벳을 이용하지 않는 방식... 너무 느림...
         // Map 과 Set을 이용한 처리 방법....
+        // 확실히 Map 과 Set을 쓰면 느림...
         String[] w1 = word1.split("");
         String[] w2 = word2.split("");
 
@@ -29,17 +30,13 @@ class Solution {
         int[] l1 = new int[s1.size()];
         int[] l2 = new int[s2.size()];
 
+        // 맵을 쓰면 빠르다고 하지만,... 역시 느리긴함..
         int i = 0;
         for(String s : s1) {
-            l1[i] = (int)m1.get(s);
             if(m2.get(s) == null ) {
                 return false;
             }
-            i++;
-        }
-
-        i = 0;
-        for(String s : s2) {
+            l1[i] = (int)m1.get(s);
             l2[i] = (int)m2.get(s); 
             i++;
         }
@@ -54,6 +51,10 @@ class Solution {
         }
 
         return true;
+
+        // 알파벳을 이용한 처리 방법....
+        // 확실히 배열 만 사용해서 그런지 빠름
+        // 반복문이 4번 사용됨
 
         // if(word1.length() != word2.length()) {
         //     return false;
