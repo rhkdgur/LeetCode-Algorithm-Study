@@ -37,8 +37,8 @@ class Solution {
             if(m2.get(s) == null ) {
                 return false;
             }
-            l1[i] = (int)m1.get(s);
-            l2[i] = (int)m2.get(s); 
+            l1[i] = m1.get(s);
+            l2[i] = m2.get(s); 
             i++;
         }
 
