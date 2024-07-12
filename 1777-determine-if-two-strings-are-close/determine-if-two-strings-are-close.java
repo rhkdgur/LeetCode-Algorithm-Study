@@ -2,11 +2,9 @@ class Solution {
     public boolean closeStrings(String word1, String word2) {
         
         // 알파벳을 이용하지 않는 방식... 너무 느림...
+        // Map 과 Set을 이용한 처리 방법....
         String[] w1 = word1.split("");
         String[] w2 = word2.split("");
-
-        Arrays.sort(w1);
-        Arrays.sort(w2);
 
         Map<String,Integer> m1 = new HashMap<>();
         Map<String,Integer> m2 = new HashMap<>();
