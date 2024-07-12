@@ -45,7 +45,7 @@ class Solution {
         Collections.sort(l2);
         
         for(int i = 0; i<l1.size(); i++) {
-        	if((int)l1.get(i) != (int)l2.get(i)) {
+        	if(!l1.get(i).equals(l2.get(i))) {
         		return false;
         	}
         }
