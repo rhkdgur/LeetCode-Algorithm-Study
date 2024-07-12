@@ -36,10 +36,10 @@ class Solution {
                 return false;
             }
         }
+
         for(String s : s2) {
             l2.add(m2.get(s));
         }
-
 
         Collections.sort(l1);
         Collections.sort(l2);
@@ -49,7 +49,6 @@ class Solution {
         		return false;
         	}
         }
-            
 
         return true;
 
