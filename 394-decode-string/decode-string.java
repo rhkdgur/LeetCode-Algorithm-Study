@@ -9,7 +9,8 @@ class Solution {
         for(char ch : s.toCharArray()) {
             // 숫자가 나오는 경우
             if(Character.isDigit(ch)) {
-                n = n*10 + (ch - '0');
+                n = (n*10) + (ch - '0');
+                System.out.println(n+","+ch);
             }else if(ch == '[') {
                 stacks.push(n);
                 n = 0;
