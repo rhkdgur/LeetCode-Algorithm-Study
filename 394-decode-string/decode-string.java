@@ -9,8 +9,8 @@ class Solution {
         for(char ch : s.toCharArray()) {
             // 숫자가 나오는 경우
             if(Character.isDigit(ch)) {
-                n = n*10 + ch - '0';
-                System.out.println(n);
+                // 100이라는 숫자일 경우에 대한 대비
+                n = n*10 + (ch - '0');
             }else if(ch == '[') {
                 stacks.push(n);
                 n = 0;
