@@ -1,29 +1,30 @@
 class Solution {
     public String predictPartyVictory(String senate) {
         
-        Queue<Integer> que = new LinkedList<>();
-        Queue<Integer> que2 = new LinkedList<>();
+        Queue<Integer> rad = new LinkedList<>();
+        Queue<Integer> dir = new LinkedList<>();
 
         String[] sen = senate.split("");
         for(int i=0; i<senate.length(); i++) {
             if(sen[i].equals("R")){
-                que.add(i);
+                rad.add(i);
             }else {
-                que2.add(i);
+                dir.add(i);
             }
         }
 
         int n = senate.length();
-        while(!que.isEmpty() && !que2.isEmpty()) {
-            if(que.peek() < que2.peek()) {
-                que.add(n++);
+        String win = "";
+        while(!rad.isEmpty() && !dir.isEmpty()) {
+            if(rad.peek() < dir.peek()) {
+                rad.add(n++);
             }else {
-                que2.add(n++);
+                dir.add(n++);
             }
-            que.poll(); 
-            que2.poll();
+            rad.poll(); 
+            dir.poll();
         }
 
-        return !que.isEmpty() ? "Radiant" : "Dire";
+        return !rad.isEmpty() ? "Radiant" : "Dire";
     }
 }
