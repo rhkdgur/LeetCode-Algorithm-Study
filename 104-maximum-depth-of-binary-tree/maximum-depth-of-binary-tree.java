@@ -18,10 +18,10 @@ class Solution {
         
         if(root == null) return 0;
 
-        int left = maxDepth(root.left)+1;
-        int right = maxDepth(root.right)+1;
+        int l = maxDepth(root.left) + 1;
+        int r = maxDepth(root.right) + 1;
 
-        return Math.max(left,right);
+        return Math.max(l,r);
 
     }
 }
