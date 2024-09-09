@@ -15,32 +15,26 @@
  */
 class Solution {
 
-     int paths = 0;
+    int total = 0;
+    public int pathSum(TreeNode root, int targetSum) {
+        if(root == null) return 0;
 
-        public int pathSum(TreeNode root, int targetSum) {
+        targetCnt(root, targetSum,0);
+        pathSum(root.left,targetSum);
+        pathSum(root.right,targetSum);
 
-            if (root == null)
-                return 0;
-            //dfs including current root.
-            dfsCurrent(root, targetSum, 0);
+        return  total;
+    }
 
-            //dfs excluding current root on the left side
-            pathSum(root.left, targetSum);
+    public void targetCnt(TreeNode root, int targetSum, long count) {
+        if(root == null) return;
 
-            //dfs excluding current root on the right side
-            pathSum(root.right, targetSum);
-            return paths;
-        }
+        long cnt = count + root.val;
 
-        private void dfsCurrent(TreeNode root, int targetSum, long sum) {
-            if (root == null)
-                return;
-            //include current root and check for the sum
-            if (sum + root.val == targetSum)
-                paths++;
+        if(targetSum == cnt)  total++;
 
-            //include current root and go left and right
-            dfsCurrent(root.left, targetSum, sum + root.val);
-            dfsCurrent(root.right, targetSum, sum + root.val);
-        }
+        targetCnt(root.left,targetSum,cnt);
+        targetCnt(root.right,targetSum,cnt);
+    
+    }
 }
