@@ -14,27 +14,33 @@
  * }
  */
 class Solution {
-    
-    public int pathSum(TreeNode root, int targetSum) {
-          if(root == null) return 0;
-            return pathSumFromRoot(root, targetSum) + pathSum(root.left, targetSum) + pathSum(root.right, targetSum);
-    }
 
-    
-    private static int pathSumFromRoot(TreeNode root, long sum){
-        if(root == null) return 0;
-        
-        int res = 0;
-        if(root.val == sum) {
-            res += 1;
+     int paths = 0;
+
+        public int pathSum(TreeNode root, int targetSum) {
+
+            if (root == null)
+                return 0;
+            //dfs including current root.
+            dfsCurrent(root, targetSum, 0);
+
+            //dfs excluding current root on the left side
+            pathSum(root.left, targetSum);
+
+            //dfs excluding current root on the right side
+            pathSum(root.right, targetSum);
+            return paths;
         }
-        
-        res += pathSumFromRoot(root.left, sum - root.val);
-        res += pathSumFromRoot(root.right, sum - root.val);
-        
-        return (int)res;
 
+        private void dfsCurrent(TreeNode root, int targetSum, long sum) {
+            if (root == null)
+                return;
+            //include current root and check for the sum
+            if (sum + root.val == targetSum)
+                paths++;
 
-    }
-
+            //include current root and go left and right
+            dfsCurrent(root.left, targetSum, sum + root.val);
+            dfsCurrent(root.right, targetSum, sum + root.val);
+        }
 }
