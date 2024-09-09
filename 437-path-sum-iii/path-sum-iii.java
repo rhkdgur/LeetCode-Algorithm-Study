@@ -14,27 +14,23 @@
  * }
  */
 class Solution {
-    
     public int pathSum(TreeNode root, int targetSum) {
-          if(root == null) return 0;
-            return pathSumFromRoot(root, targetSum) + pathSum(root.left, targetSum) + pathSum(root.right, targetSum);
-    }
-
-    
-    private static int pathSumFromRoot(TreeNode root, long sum){
         if(root == null) return 0;
+        return targetCnt(root,targetSum) + pathSum(root.left,targetSum) + pathSum(root.right,targetSum);
+    }
+
+    public int targetCnt(TreeNode root, long targetSum) {
         
-        int res = 0;
-        if(root.val == sum) {
-            res += 1;
-        }
-        
-        res += pathSumFromRoot(root.left, sum - root.val);
-        res += pathSumFromRoot(root.right, sum - root.val);
-        
-        return (int)res;
+        if(root == null) return 0;
+
+        targetSum -= root.val;
+        int cnt = targetSum == 0 ? 1 : 0;
+
+        cnt += targetCnt(root.left, targetSum);
+        cnt += targetCnt(root.right, targetSum);
+
+        return cnt;
 
 
     }
-
 }
