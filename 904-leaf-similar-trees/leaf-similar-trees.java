@@ -15,22 +15,25 @@
  */
 class Solution {
     public boolean leafSimilar(TreeNode root1, TreeNode root2) {
-          List<Integer> list1 = new ArrayList<>();
-          List<Integer> list2 = new ArrayList<>();
-          list1 = collectlist(root1,list1);
-          list2 = collectlist(root2,list2);
-          return list1.equals(list2);
+        List<Integer> root1List = new ArrayList<>();
+        List<Integer> root2List = new ArrayList<>();
+        similar(root1List,root1);
+        similar(root2List,root2);
+        return root1List.equals(root2List);
     }
 
-    public List<Integer> collectlist(TreeNode root , List<Integer> leaf) { 
-         if(root == null) return leaf;
+    public void similar(List<Integer> list , TreeNode root) {
+        if(root == null)
+            return ;
 
-         if(root.left == null && root.right == null)
-                leaf.add(root.val);
+        if(root.left == null && root.right == null) {
+            list.add(root.val);
+            return;
+        }
 
-         leaf = collectlist(root.left,leaf);
-         leaf = collectlist(root.right,leaf);
+        similar(list,root.left);
+        similar(list,root.right);
 
-         return leaf;
+        
     }
 }
