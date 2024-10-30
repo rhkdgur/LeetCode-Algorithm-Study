@@ -14,22 +14,29 @@
  * }
  */
 class Solution {
+
+    int count = 0;
+
     public int goodNodes(TreeNode root) {
-        return collectLinked(root,root.val);
+        if(root == null)
+            return 0;
+
+        checkNodes(root, root.val);
+        return count;
+        
     }
 
-    
-    public int collectLinked(TreeNode root , int max) {
-        
-        if(root == null) return 0;
-        
-        if(max <= root.val) {
-            return 1 + collectLinked(root.left,root.val) + collectLinked(root.right,root.val);
-        }else {
-            return collectLinked(root.left,max) + collectLinked(root.right,max);
+    public void checkNodes(TreeNode root, int max){
+        if(root == null)
+            return;
+
+        if(root.val >= max) {
+            count++;
+            max = root.val;
         }
 
-    } 
-
+        checkNodes(root.left, max);
+        checkNodes(root.right, max);
+    }
 
 }
