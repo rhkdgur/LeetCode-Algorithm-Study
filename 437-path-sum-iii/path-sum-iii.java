@@ -14,12 +14,11 @@
  * }
  */
 class Solution {
-    public int pathSum(TreeNode root, int targetSum) {
+      public int pathSum(TreeNode root, int targetSum) {
         if(root == null) return 0;
         return targetCnt(root,targetSum) + pathSum(root.left,targetSum) + pathSum(root.right,targetSum);
     }
 
-    //targetSum 이 long인 이유는 오버플로우가 발생할 수 있기 때문
     public int targetCnt(TreeNode root, long targetSum) {
         
         if(root == null) return 0;
