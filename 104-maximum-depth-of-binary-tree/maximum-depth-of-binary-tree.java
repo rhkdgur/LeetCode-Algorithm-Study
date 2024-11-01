@@ -14,14 +14,28 @@
  * }
  */
 class Solution {
+
+    int dept = 0;
     public int maxDepth(TreeNode root) {
+        if(root == null)
+            return 0;
+            
+        if(root.left == null && root.right == null)
+            return 1;
         
-        if(root == null) return 0;
+        checkDepth(root,1);
+        return dept;
+    }
 
-        int l = maxDepth(root.left) + 1;
-        int r = maxDepth(root.right) + 1;
+    public void checkDepth(TreeNode root, int c) {
+        if(root == null)
+            return ;
 
-        return Math.max(l,r);
+        if(root.left == null && root.right == null) {
+            dept = Math.max(dept, c);
+        }
 
+        checkDepth(root.left, c+1);
+        checkDepth(root.right, c+1);
     }
 }
