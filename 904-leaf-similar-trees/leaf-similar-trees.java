@@ -17,23 +17,20 @@ class Solution {
     public boolean leafSimilar(TreeNode root1, TreeNode root2) {
         List<Integer> root1List = new ArrayList<>();
         List<Integer> root2List = new ArrayList<>();
-        similar(root1List,root1);
-        similar(root2List,root2);
+        checkLeaf(root1List, root1);
+        checkLeaf(root2List, root2);
         return root1List.equals(root2List);
     }
 
-    public void similar(List<Integer> list , TreeNode root) {
-        if(root == null)
-            return ;
-
-        if(root.left == null && root.right == null) {
-            list.add(root.val);
+    public void checkLeaf(List<Integer> list, TreeNode root1) {
+        if(root1 == null)
             return;
+
+        if(root1.left == null && root1.right == null){
+            list.add(root1.val);
         }
 
-        similar(list,root.left);
-        similar(list,root.right);
-
-        
-    }
+        checkLeaf(list, root1.left);
+        checkLeaf(list, root1.right);
+    } 
 }
