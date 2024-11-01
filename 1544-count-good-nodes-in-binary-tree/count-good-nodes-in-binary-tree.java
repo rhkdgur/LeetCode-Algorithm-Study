@@ -16,27 +16,25 @@
 class Solution {
 
     int count = 0;
-
     public int goodNodes(TreeNode root) {
         if(root == null)
             return 0;
 
-        checkNodes(root, root.val);
+        checkGoodNodes(root, root.val);
         return count;
-        
     }
-
-    public void checkNodes(TreeNode root, int max){
+    
+    public void checkGoodNodes(TreeNode root, int max) {
         if(root == null)
-            return;
+            return ;
 
-        if(root.val >= max) {
+        max = Math.max(max,root.val);
+
+        if(max <= root.val)
             count++;
-            max = root.val;
-        }
-
-        checkNodes(root.left, max);
-        checkNodes(root.right, max);
+        
+        checkGoodNodes(root.left,max);
+        checkGoodNodes(root.right,max);
     }
-
+    
 }
