@@ -18,26 +18,20 @@ class Solution {
         List<Integer> rootList = new ArrayList<>();
         if(root == null)
             return new ArrayList<>();
+        checkRightSize(rootList, root, 0);
+        return rootList;
+    }
 
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
+    public void checkRightSize(List<Integer> list, TreeNode root, int dept) {
+        if(root == null)
+            return ;
 
-        while(!queue.isEmpty()) {
-            int len = queue.size();
-            for(int i = 0; i<len; i++) {
-                TreeNode n = queue.poll();
-                if(i == (len - 1)) {
-                    rootList.add(n.val);
-                }
-
-                if(n.left != null)
-                    queue.offer(n.left);
-                if(n.right != null)
-                    queue.offer(n.right);
-            }
+        if(dept == list.size()) {
+            list.add(root.val);
         }
 
-        return rootList;
+        checkRightSize(list, root.right, dept+1);
+        checkRightSize(list, root.left, dept+1);
     }
 
 }
