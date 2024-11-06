@@ -15,41 +15,34 @@
  */
 class Solution {
     public TreeNode searchBST(TreeNode root, int val) {
-        if(root == null)
-            return null;
-        else {
-            if (root.val == val) {
-                return root;
-            }
+        if(root == null || root.val == val) {
+            return root;
         }
-        return BFS(root,val);
-    }
-
-    public TreeNode BFS(TreeNode root, int val) {
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
 
-        while(!queue.isEmpty()) {
+        while(!queue.isEmpty()){
             int len = queue.size();
-            for(int i = 0; i<len; i++) {
-                TreeNode r = queue.poll();
-                if(r.left != null) {
-                    if(val == r.left.val) {
-                        return r.left;
+            for( int i = 0; i<len; i++) {
+                TreeNode n = queue.poll();
+                if(n.left != null) {
+                    if(n.left.val == val) {
+                        return n.left;
                     }else {
-                        queue.offer(r.left);
+                        queue.offer(n.left);
                     }
                 }
-                if(r.right != null) {
-                    if(val == r.right.val) {
-                        return r.right;
+                if(n.right != null) {
+                    if(n.right.val == val) {
+                        return n.right;
                     }else {
-                        queue.offer(r.right);
+                        queue.offer(n.right);
                     }
                 }
             }
         }
+
         return null;
     }
 }
